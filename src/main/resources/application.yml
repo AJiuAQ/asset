@@ -1,0 +1,24 @@
+server:
+  port: 1111
+  tomcat:
+    uri-encoding: UTF-8
+
+spring:
+  application:
+    name: asset
+  datasource:
+    #    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/asset?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&generateSimpleParameterMetadata=true&autoReconnect=true&maxReconnects=10
+    username: root
+    password: root
+  jpa:
+    database: MySQL
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
