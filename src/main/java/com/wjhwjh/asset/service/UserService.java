@@ -11,4 +11,8 @@ public interface UserService {
 
     User save(User user);
 
+    User findByLoginName(User user);
+
+    User saveAndFlush(User user);
+
 }

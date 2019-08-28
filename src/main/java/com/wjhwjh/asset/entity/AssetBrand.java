@@ -16,6 +16,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "asset_brand")
 @Proxy(lazy = false)
-public class AssetBrand extends DataEntity<AssetBrand> {
+public class AssetBrand extends AssetEntity {
 
 }

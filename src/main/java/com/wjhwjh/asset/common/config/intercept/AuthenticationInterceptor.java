@@ -5,6 +5,8 @@ import com.wjhwjh.asset.common.config.annotation.PassToken;
 import com.wjhwjh.asset.common.config.annotation.UserLoginToken;
 import com.wjhwjh.asset.common.exception.AuthenticationException;
 import com.wjhwjh.asset.common.utils.JWTUtils;
+import com.wjhwjh.asset.common.utils.UserUtils;
+import com.wjhwjh.asset.entity.User;
 import com.wjhwjh.asset.entity.result.Result;
 import com.wjhwjh.asset.entity.result.ResultCode;
 import com.wjhwjh.asset.service.UserService;
@@ -34,13 +36,14 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Value("Authorization")
     private String authorization;
 
+    //会跳转/error
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
         String token = request.getHeader("Authorization");
         //如果不是映射的方法直接通过
-//        if (!(object instanceof HandlerMethod)) {
-//            return false;
-//        }
+        if (!(object instanceof HandlerMethod)) {
+            return false;
+        }
         HandlerMethod handlerMethod = (HandlerMethod) object;
         Method method = handlerMethod.getMethod();
         //检查是否有passToken注释，有则跳过认证
@@ -50,7 +53,8 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 return true;
             }
         } else {
-            if (token == null || !jwtUtils.validateToken(token)) {
+            User user = UserUtils.getUser();
+            if (token == null || !jwtUtils.validateToken(token) || user == null || !token.equals(user.getToken())) {
                 response.setContentType("text/html;charset=utf-8");
                 PrintWriter printWriter = response.getWriter();
                 printWriter.println(JSON.toJSONString(Result.failure(ResultCode.USER_NOT_TOKEN)));

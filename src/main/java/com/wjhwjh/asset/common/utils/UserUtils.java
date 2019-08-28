@@ -2,7 +2,7 @@ package com.wjhwjh.asset.common.utils;
 
 import com.wjhwjh.asset.entity.User;
 import com.wjhwjh.asset.repository.AssetUserRepository;
-import com.wjhwjh.asset.repository.SysUserRepository;
+import com.wjhwjh.asset.repository.UserRepository;
 
 /**
  * @author wjhwjh
@@ -12,9 +12,7 @@ import com.wjhwjh.asset.repository.SysUserRepository;
 public class UserUtils {
 
 
-    private static AssetUserRepository assetUserRepository = SpringContextHolder.getBean(AssetUserRepository.class);
-
-    private static SysUserRepository sysUserRepository = SpringContextHolder.getBean(SysUserRepository.class);
+    private static UserRepository userRepository = SpringContextHolder.getBean(UserRepository.class);
 
     private static JWTUtils jwtUtils = SpringContextHolder.getBean(JWTUtils.class);
 

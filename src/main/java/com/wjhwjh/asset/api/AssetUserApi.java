@@ -1,7 +1,9 @@
 package com.wjhwjh.asset.api;
 
 import com.alibaba.fastjson.JSONObject;
+import com.wjhwjh.asset.entity.AssetUser;
 import com.wjhwjh.asset.entity.User;
+import com.wjhwjh.asset.service.AssetUserService;
 import com.wjhwjh.asset.service.TokenService;
 import com.wjhwjh.asset.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,17 +11,17 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("users")
-public class UserApi {
+public class AssetUserApi {
 
     @Autowired
-    UserService userService;
+    AssetUserService assetUserService;
     @Autowired
     TokenService tokenService;
 
 
     @PostMapping(value = "user", produces = "text/plain;charset=UTF-8")
     public String addUser(@RequestBody User user) {
-        return JSONObject.toJSONString(userService.saveUser(user).toString());
+        return JSONObject.toJSONString(assetUserService.save((AssetUser) user).toString());
     }
 
     @PostMapping("/login")

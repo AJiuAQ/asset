@@ -1,7 +1,7 @@
 package com.wjhwjh.asset.common;
 
 import com.wjhwjh.asset.common.utils.UserUtils;
-import com.wjhwjh.asset.entity.AssetUser;
+import com.wjhwjh.asset.entity.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,8 +15,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class SysService {
 
     @Transactional
-    public AssetUser passwordLogin(String loginName, String password) {
-        AssetUser assetAssetUser = UserUtils.findByLoginName(loginName);
-        return assetAssetUser;
+    public User passwordLogin(String loginName, String password) {
+        User user = UserUtils.findByLoginName(loginName);
+        return user;
     }
 }

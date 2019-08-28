@@ -28,15 +28,15 @@ public class Result implements Serializable {
         this.message = message;
     }
 
-    public static Result success(){
+    public static Result success(ResultCode resultCode) {
         Result result = new Result();
-        result.setResultCode(ResultCode.SUCCESS);
+        result.setResultCode(resultCode);
         return result;
     }
 
     public static Result success(ResultCode resultCode, Object data) {
         Result result = new Result();
-        result.setResultCode(ResultCode.SUCCESS);
+        result.setResultCode(resultCode);
         result.setData(data);
         return result;
     }
@@ -54,7 +54,7 @@ public class Result implements Serializable {
         return result;
     }
 
-    public void setResultCode(ResultCode code){
+    public void setResultCode(ResultCode code) {
         this.code = code.code();
         this.message = code.message();
     }

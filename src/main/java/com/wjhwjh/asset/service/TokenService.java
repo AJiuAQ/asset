@@ -1,7 +1,7 @@
 package com.wjhwjh.asset.service;
 
-import com.wjhwjh.asset.entity.AssetUser;
+import com.wjhwjh.asset.entity.User;
 
 public interface TokenService {
-    public String getToken(AssetUser AssetUser);
+    public String getToken(User user);
 }

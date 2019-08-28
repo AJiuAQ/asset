@@ -21,8 +21,7 @@ public class AssetUserServiceImpl implements AssetUserService {
     @Override
     public AssetUser save(AssetUser assetUser) {
         assetUser.preInsert();
-        assetUserRepository.save(assetUser);
-        return 1;
+        return assetUserRepository.save(assetUser);
     }
 
     @Override

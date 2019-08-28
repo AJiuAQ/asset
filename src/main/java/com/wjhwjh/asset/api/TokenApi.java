@@ -1,6 +1,7 @@
 package com.wjhwjh.asset.api;
 
 import com.alibaba.fastjson.JSONObject;
+import com.wjhwjh.asset.common.config.annotation.PassToken;
 import com.wjhwjh.asset.common.config.annotation.UserLoginToken;
 import com.wjhwjh.asset.entity.User;
 import com.wjhwjh.asset.entity.result.Result;
@@ -30,26 +31,27 @@ public class TokenApi {
     @Autowired
     TokenService tokenService;
 
-    @UserLoginToken
     @PostMapping("")
+    @PassToken(required = true)
     public Result login(@RequestBody User user) {
         JSONObject jsonObject = new JSONObject();
         User userForBase = userService.findByLoginName(user);
         if (userForBase == null) {
             jsonObject.put("message", "登陆失败，用户不存在");
-            return Result.failure(ResultCode.USER_LOGIN_ERROR,jsonObject);
+            return Result.failure(ResultCode.USER_LOGIN_ERROR, jsonObject);
         } else {
             if (!userForBase.getPassword().equals(user.getPassword())) {
                 jsonObject.put("message", "登录失败,密码错误");
-                return Result.failure(ResultCode.USER_LOGIN_ERROR,jsonObject);
+                return Result.failure(ResultCode.USER_LOGIN_ERROR, jsonObject);
             } else {
-                String token = tokenService.getToken(userForBase);
-                jsonObject.put("token", token);
+//                String token = tokenService.getToken(userForBase);
+//                userService.save(userForBase);
+//                userForBase.setToken(token);
                 jsonObject.put("user", userForBase);
             }
         }
 
-        return Result.success(ResultCode.SUCCESS,jsonObject);
+        return Result.success(ResultCode.SUCCESS, jsonObject);
     }
 
 }

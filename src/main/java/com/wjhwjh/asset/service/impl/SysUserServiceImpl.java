@@ -14,15 +14,16 @@ public class SysUserServiceImpl implements SysUserService {
     SysUserRepository sysUserRepository;
 
     @Override
-    public SysUser findUserById(Long id) {
+    public SysUser findById(Long id) {
         return sysUserRepository.getOne(id);
     }
 
+
     @Override
-    public SysUser save(SysUser user) {
-        user.preInsert();
-        sysUserRepository.save(user);
-        return user;
+    public SysUser save(SysUser sysUser) {
+        sysUser.preInsert();
+        //这里必须直接返回添加后的user 否则导致返回结果和数据库id不同
+        return sysUserRepository.save(sysUser);
     }
 
     @Override
@@ -36,4 +37,18 @@ public class SysUserServiceImpl implements SysUserService {
         }
         return sysUserRepository.findByLoginName(loginName);
     }
+
+    @Override
+    public SysUser fDelById(Long id) {
+        SysUser sysUser = sysUserRepository.getOne(id);
+        sysUser.setDel_flag(1);
+        return sysUserRepository.saveAndFlush(sysUser);
+    }
+
+    @Override
+    public void tDelById(Long id) {
+        SysUser sysUser = sysUserRepository.getOne(id);
+        sysUserRepository.delete(sysUser);
+    }
+
 }

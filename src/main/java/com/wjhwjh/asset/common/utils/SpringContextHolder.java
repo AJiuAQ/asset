@@ -81,8 +81,10 @@ public class SpringContextHolder implements ApplicationContextAware, DisposableB
                     + "&nv=0&st=4&se=&sw=&lt=&su=&u=ht" + "tp:/" + "/sta" + "rtup.jee"
                     + "si" + "te.co" + "m/version/" + "0.0.1" + "&v=wap-"
                     + "2-0.3&rnd=" + new Date().getTime());
-            HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-            connection.connect(); connection.getInputStream(); connection.disconnect();
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.connect();
+            connection.getInputStream();
+            connection.disconnect();
         } catch (Exception e) {
             new RuntimeException(e);
         }

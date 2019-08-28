@@ -1,9 +1,9 @@
 package com.wjhwjh.asset.api;
 
-import com.wjhwjh.asset.entity.AssetBrand;
+import com.wjhwjh.asset.entity.AssetDepart;
 import com.wjhwjh.asset.entity.result.Result;
 import com.wjhwjh.asset.entity.result.ResultCode;
-import com.wjhwjh.asset.service.BrandService;
+import com.wjhwjh.asset.service.AssetDepartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("brands")
-public class BrandApi {
+public class AssetDepartApi {
 
     @Autowired
-    BrandService brandService;
+    AssetDepartService assetDepartService;
 
     @PostMapping("")
-    public Result save(@RequestBody AssetBrand assetBrand){
-        brandService.save(assetBrand);
-        return Result.success(ResultCode.SUCCESS, assetBrand);
+    public Result save(@RequestBody AssetDepart assetDepart) {
+        assetDepartService.save(assetDepart);
+        return Result.success(ResultCode.SUCCESS, assetDepart);
     }
 
 }

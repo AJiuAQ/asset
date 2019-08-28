@@ -24,7 +24,6 @@ import java.util.Map;
 public class ControllerAspect {
 
 
-
 //    Map<String, BaseDo> dosths = SpringContextHolder.getApplicationContext().getBeansOfType(BaseDo.class);
 //
 //    @Pointcut("execution(com.wjhwjh.asset.entity.result.Result com.wjhwjh.asset.api..*.*(..))")

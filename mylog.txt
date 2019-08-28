@@ -1,0 +1,35 @@
+1、spring data jpa 数据库多表连接查询
+//创建者
+    @OneToOne
+    @JoinColumn(name = "create_by")
+    protected User createBy;
+
+
+2、jwt有效性设置
+
+关联userId
+
+3、user设置
+  √1.user、sys、asset、单独存放于一张表，user与另两个共用一个id加入标识字段 √
+	2.三个所有数据均单独存放
+	3.存于一张表中
+	
+4.HTTP406解决方法
+导入
+<!-- jack        -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.10.0.pr1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.10.0.pr1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>2.10.0.pr1</version>
+        </dependency>
+如果mapping有编码设置，去除

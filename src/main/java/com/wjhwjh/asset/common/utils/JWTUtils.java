@@ -136,8 +136,8 @@ public class JWTUtils {
     public Boolean validateToken(String token) {
         try {
             Jwts.parser()
-                 .setSigningKey(secret)
-                 .parseClaimsJws(token);
+                    .setSigningKey(secret)
+                    .parseClaimsJws(token);
         } catch (Exception e) {
             return false;
         }

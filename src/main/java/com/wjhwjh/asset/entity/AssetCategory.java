@@ -1,5 +1,6 @@
 package com.wjhwjh.asset.entity;
 
+import com.wjhwjh.asset.common.persistence.DataEntity;
 import lombok.Data;
 import org.hibernate.annotations.Proxy;
 
@@ -15,5 +16,5 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "asset_category")
 @Proxy(lazy = false)
-public class AssetCategory {
+public class AssetCategory extends AssetEntity {
 }
