@@ -38,6 +38,7 @@ public class User extends DataEntity<User> {
     @Column(nullable = false)
     private Integer type;
 
+    @Column(length = 500)
     private String token;
 
     @Column(length = 200)

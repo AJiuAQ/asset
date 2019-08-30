@@ -33,3 +33,12 @@
             <version>2.10.0.pr1</version>
         </dependency>
 如果mapping有编码设置，去除
+
+5、创建者、修改者应该为一对多
+
+2019-08-29开始构建业务逻辑
+
+1、code根据类型、name、id自动生成
+	添加标识、切面赋值
+	
+2、controller、dao、service通过继承？实现新增，获取，修改，删除

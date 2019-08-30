@@ -1,18 +1,7 @@
 package com.wjhwjh.asset.common.config.aspect;
 
-import com.wjhwjh.asset.common.utils.SpringContextHolder;
-import com.wjhwjh.asset.entity.result.Result;
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
-import org.aspectj.lang.reflect.MethodSignature;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.lang.reflect.Method;
-import java.util.Map;
 
 /**
  * @author wjhwjh

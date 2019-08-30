@@ -1,16 +1,19 @@
 package com.wjhwjh.asset.api;
 
-import com.alibaba.fastjson.JSONObject;
+import com.wjhwjh.asset.common.persistence.result.Result;
+import com.wjhwjh.asset.common.persistence.result.ResultCode;
 import com.wjhwjh.asset.entity.AssetUser;
-import com.wjhwjh.asset.entity.User;
+import com.wjhwjh.asset.entity.SysUser;
 import com.wjhwjh.asset.service.AssetUserService;
 import com.wjhwjh.asset.service.TokenService;
-import com.wjhwjh.asset.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
-@RequestMapping("users")
+@RequestMapping("assetUsers")
 public class AssetUserApi {
 
     @Autowired
@@ -18,34 +21,37 @@ public class AssetUserApi {
     @Autowired
     TokenService tokenService;
 
-
-    @PostMapping(value = "user", produces = "text/plain;charset=UTF-8")
-    public String addUser(@RequestBody User user) {
-        return JSONObject.toJSONString(assetUserService.save((AssetUser) user).toString());
+    @GetMapping
+    public Result getSysUsers(AssetUser assetUser) {
+        return Result.success(ResultCode.SUCCESS, assetUserService.findList(assetUser));
     }
 
-    @PostMapping("/login")
-//    public Object login(@RequestBody User user) {
-//        JSONObject jsonObject = new JSONObject();
-//        User userForBase = userService.getUserByName(user);
-//        if (userForBase == null) {
-//            jsonObject.put("message", "登陆失败，用户不存在");
-//        } else {
-//            if (!userForBase.getPassword().equals(user.getPassword())) {
-//                jsonObject.put("message", "登录失败,密码错误");
-//            } else {
-//                String token = tokenService.getToken(userForBase);
-//                jsonObject.put("token", token);
-//                jsonObject.put("user", userForBase);
-//            }
-//        }
-//
-//        return jsonObject;
-//    }
-
-    //    @UserLoginToken
-    @GetMapping(value = "/getMessage", produces = "text/plain;charset=UTF-8")
-    public String getMessage() {
-        return "123";
+    @GetMapping("/{assetUserId}")
+    public Result getSysUser(@PathVariable("sysUserId") Long assetUserId) {
+        return Result.success(ResultCode.SUCCESS, assetUserService.findById(assetUserId));
     }
+
+    @PostMapping()
+    public Result addAssetUser(@Valid @RequestBody AssetUser assetUser) {
+        return Result.success(ResultCode.SUCCESS, assetUserService.save(assetUser));
+    }
+
+    @PutMapping
+    public Result updateAssetUser(@Valid @RequestBody AssetUser assetUser) {
+        return Result.success(ResultCode.SUCCESS, assetUserService.update(assetUser));
+    }
+
+    @PostMapping("/{assetUserId}")
+    public Result fDelSysUser(@PathVariable("assetUserId") Long assetUserId) {
+        assetUserService.fDelById(assetUserId);
+        return Result.success(ResultCode.SUCCESS);
+    }
+
+    @DeleteMapping("/{assetUserId}")
+    @ResponseStatus(HttpStatus.OK)
+    public Result tDelSysUser(@PathVariable("assetUserId") Long assetUserId) {
+        assetUserService.tDelById(assetUserId);
+        return Result.success(ResultCode.SUCCESS);
+    }
+
 }

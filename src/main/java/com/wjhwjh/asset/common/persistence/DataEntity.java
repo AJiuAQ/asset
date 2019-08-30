@@ -8,6 +8,7 @@ import com.wjhwjh.asset.entity.User;
 import lombok.Data;
 
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToOne;
 import java.util.Date;
@@ -30,7 +31,7 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
     protected String remarks;
 
     //创建者
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "create_by")
     protected User createBy;
 
@@ -39,7 +40,7 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
     protected Date createDate;
 
     //更新者
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "update_by")
     protected User updateBy;
 
@@ -65,11 +66,11 @@ public abstract class DataEntity<T> extends BaseEntity<T> {
     @Override
     public void preInsert() {
 // 不限制ID为UUID，调用setIsNewRecord()使用自定义ID
-        if (!this.isNewRecord) {
-            Long id = SnowFlake.nextId();
-            setId(id);
-            System.out.println("------------------id" + id);
-        }
+//        if (!this.isNewRecord) {
+//            Long id = SnowFlake.nextId();
+//            setId(id);
+//            System.out.println("------------------id" + id);
+//        }
         User user = UserUtils.getUser();
 //        User user = new User();
         if (0 != user.getId()) {

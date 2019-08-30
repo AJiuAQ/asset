@@ -1,10 +1,9 @@
 package com.wjhwjh.asset.common.config.aspect.dosth;
 
-import com.wjhwjh.asset.common.config.annotation.Anonymous;
 import com.wjhwjh.asset.common.config.annotation.PassToken;
 import com.wjhwjh.asset.common.config.aspect.BaseDo;
 import com.wjhwjh.asset.common.utils.JWTUtils;
-import com.wjhwjh.asset.entity.result.Result;
+import com.wjhwjh.asset.common.persistence.result.Result;
 import org.aspectj.lang.JoinPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -2,10 +2,9 @@ package com.wjhwjh.asset.api;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wjhwjh.asset.common.config.annotation.PassToken;
-import com.wjhwjh.asset.common.config.annotation.UserLoginToken;
 import com.wjhwjh.asset.entity.User;
-import com.wjhwjh.asset.entity.result.Result;
-import com.wjhwjh.asset.entity.result.ResultCode;
+import com.wjhwjh.asset.common.persistence.result.Result;
+import com.wjhwjh.asset.common.persistence.result.ResultCode;
 import com.wjhwjh.asset.service.TokenService;
 import com.wjhwjh.asset.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.wjhwjh.asset.entity.result;
+package com.wjhwjh.asset.common.persistence.result;
 
 import java.util.ArrayList;
 import java.util.List;

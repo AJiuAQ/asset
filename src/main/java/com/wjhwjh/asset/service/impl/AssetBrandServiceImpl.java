@@ -20,6 +20,7 @@ public class AssetBrandServiceImpl implements AssetBrandService {
     @Override
     public AssetBrand save(AssetBrand assetBrand) {
         assetBrand.preInsert();
-        return assetBrandRepository.save(assetBrand);
+        assetBrand = assetBrandRepository.save(assetBrand);
+        return assetBrand;
     }
 }

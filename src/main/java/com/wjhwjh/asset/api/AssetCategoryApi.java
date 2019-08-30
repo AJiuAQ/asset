@@ -1,8 +1,8 @@
 package com.wjhwjh.asset.api;
 
 import com.wjhwjh.asset.entity.AssetCategory;
-import com.wjhwjh.asset.entity.result.Result;
-import com.wjhwjh.asset.entity.result.ResultCode;
+import com.wjhwjh.asset.common.persistence.result.Result;
+import com.wjhwjh.asset.common.persistence.result.ResultCode;
 import com.wjhwjh.asset.service.AssetCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Created in 18:25 2019/8/26
  */
 @RestController
-@RequestMapping("brands")
+@RequestMapping("assetCategorys")
 public class AssetCategoryApi {
 
     @Autowired

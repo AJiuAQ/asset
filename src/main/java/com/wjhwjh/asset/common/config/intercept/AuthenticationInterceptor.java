@@ -2,13 +2,11 @@ package com.wjhwjh.asset.common.config.intercept;
 
 import com.alibaba.fastjson.JSON;
 import com.wjhwjh.asset.common.config.annotation.PassToken;
-import com.wjhwjh.asset.common.config.annotation.UserLoginToken;
-import com.wjhwjh.asset.common.exception.AuthenticationException;
 import com.wjhwjh.asset.common.utils.JWTUtils;
 import com.wjhwjh.asset.common.utils.UserUtils;
 import com.wjhwjh.asset.entity.User;
-import com.wjhwjh.asset.entity.result.Result;
-import com.wjhwjh.asset.entity.result.ResultCode;
+import com.wjhwjh.asset.common.persistence.result.Result;
+import com.wjhwjh.asset.common.persistence.result.ResultCode;
 import com.wjhwjh.asset.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

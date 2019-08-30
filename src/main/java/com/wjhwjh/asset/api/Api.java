@@ -1,8 +1,8 @@
 package com.wjhwjh.asset.api;
 
-import com.wjhwjh.asset.entity.SysUser;
 import com.wjhwjh.asset.common.persistence.result.Result;
 import com.wjhwjh.asset.common.persistence.result.ResultCode;
+import com.wjhwjh.asset.entity.SysUser;
 import com.wjhwjh.asset.service.SysUserService;
 import com.wjhwjh.asset.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RestController
-@RequestMapping("sysUsers")
-public class SysUserApi {
+/**
+ * @author wjhwjh
+ * @description a
+ * Created in 16:23 2019/8/29
+ */
+public class Api<T> {
 
     @Autowired
     SysUserService sysUserService;
@@ -52,5 +55,6 @@ public class SysUserApi {
         sysUserService.tDelById(sysUserId);
         return Result.success(ResultCode.SUCCESS);
     }
+
 
 }
