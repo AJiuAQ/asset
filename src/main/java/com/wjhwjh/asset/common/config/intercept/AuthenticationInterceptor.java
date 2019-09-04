@@ -10,6 +10,7 @@ import com.wjhwjh.asset.common.persistence.result.ResultCode;
 import com.wjhwjh.asset.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
@@ -23,6 +24,7 @@ import java.lang.reflect.Method;
  * @author wjhwjh
  * token拦截器 对token进行验证
  */
+@Component
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Autowired
@@ -38,6 +40,9 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object object) throws Exception {
         String token = request.getHeader("Authorization");
+        if (token == null) {
+            response.sendRedirect("/login");
+        }
         //如果不是映射的方法直接通过
         if (!(object instanceof HandlerMethod)) {
             return false;

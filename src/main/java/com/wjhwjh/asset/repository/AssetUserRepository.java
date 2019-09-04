@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface AssetUserRepository extends JpaRepository<AssetUser, Long> {
 
-    List<AssetUser> findAll(AssetUser assetUser);
+    List<AssetUser> findAll();
 
     AssetUser findByLoginName(String loginName);
 

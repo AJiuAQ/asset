@@ -14,7 +14,7 @@ public interface AssetUserService {
 
     AssetUser findByLoginName(AssetUser assetUser);
 
-    List<AssetUser> findList(AssetUser assetUser);
+    List<AssetUser> findList();
 
     AssetUser fDelById(Long assetUserId);
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface SysUserService {
 
-    List<SysUser> findList(SysUser sysUser);
+    List<SysUser> findList();
 
     SysUser findById(Long id);
 

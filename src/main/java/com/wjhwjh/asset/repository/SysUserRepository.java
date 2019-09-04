@@ -13,7 +13,7 @@ import java.util.List;
 @Repository
 public interface SysUserRepository extends JpaRepository<SysUser, Long> {
 
-    List<SysUser> findAll(SysUser sysUser);
+    List<SysUser> findAll();
 
     SysUser findByLoginName(String loginName);
 

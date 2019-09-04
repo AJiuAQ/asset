@@ -22,6 +22,10 @@ public class UserUtils {
 //    public static final String USER_CACHE_LIST_BY_OFFICE_ID_ = "oid_";
 
     public static User getUser() {
+        //判断请求头是否有token，如果没有返回空
+        if (jwtUtils.getUserId() == null) {
+            return null;
+        }
         Long userId = Long.valueOf(jwtUtils.getUserId());
         if (0 != userId) {
             return get(userId);

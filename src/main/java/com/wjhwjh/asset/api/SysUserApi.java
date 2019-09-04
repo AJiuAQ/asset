@@ -22,7 +22,7 @@ public class SysUserApi {
 
     @GetMapping
     public Result getSysUsers(SysUser sysUser) {
-        return Result.success(ResultCode.SUCCESS, sysUserService.findList(sysUser));
+        return Result.success(ResultCode.SUCCESS, sysUserService.findList());
     }
 
     @GetMapping("/{sysUserId}")

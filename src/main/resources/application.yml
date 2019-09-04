@@ -22,3 +22,13 @@ spring:
       charset: UTF-8
       enabled: true
       force: true
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+  mvc:
+    static-path-pattern: /**
+#logging:
+#  level:
+#    root: debug

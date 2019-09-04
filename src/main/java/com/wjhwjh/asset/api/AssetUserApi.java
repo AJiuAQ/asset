@@ -23,7 +23,7 @@ public class AssetUserApi {
 
     @GetMapping
     public Result getSysUsers(AssetUser assetUser) {
-        return Result.success(ResultCode.SUCCESS, assetUserService.findList(assetUser));
+        return Result.success(ResultCode.SUCCESS, assetUserService.findList());
     }
 
     @GetMapping("/{assetUserId}")

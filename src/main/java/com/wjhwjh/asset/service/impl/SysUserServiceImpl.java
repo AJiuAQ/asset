@@ -2,6 +2,7 @@ package com.wjhwjh.asset.service.impl;
 
 import com.wjhwjh.asset.entity.SysUser;
 import com.wjhwjh.asset.repository.SysUserRepository;
+import com.wjhwjh.asset.repository.SysUserTypeRepository;
 import com.wjhwjh.asset.service.SysUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,19 +17,23 @@ public class SysUserServiceImpl implements SysUserService {
     @Autowired
     SysUserRepository sysUserRepository;
 
+    @Autowired
+    SysUserTypeRepository sysUserTypeRepository;
+
     @Override
     public SysUser findById(Long id) {
         return sysUserRepository.getOne(id);
     }
 
     @Override
-    public List<SysUser> findList(SysUser sysUser) {
-        return sysUserRepository.findAll(sysUser);
+    public List<SysUser> findList() {
+        return sysUserRepository.findAll();
     }
 
     @Override
     public SysUser save(SysUser sysUser) {
         sysUser.preInsert();
+        sysUser.setType(sysUserTypeRepository.findByName(sysUser.getType().getName()));
         //这里必须直接返回添加后的user 否则导致返回结果和数据库id不同
         return sysUserRepository.save(sysUser);
     }

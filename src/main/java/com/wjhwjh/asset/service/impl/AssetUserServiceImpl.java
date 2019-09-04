@@ -2,6 +2,7 @@ package com.wjhwjh.asset.service.impl;
 
 import com.wjhwjh.asset.entity.AssetUser;
 import com.wjhwjh.asset.repository.AssetUserRepository;
+import com.wjhwjh.asset.repository.SysUserTypeRepository;
 import com.wjhwjh.asset.service.AssetUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,9 +20,12 @@ public class AssetUserServiceImpl implements AssetUserService {
     @Autowired
     AssetUserRepository assetUserRepository;
 
+    @Autowired
+    SysUserTypeRepository sysUserTypeRepository;
+
     @Override
-    public List<AssetUser> findList(AssetUser assetUser) {
-        return assetUserRepository.findAll(assetUser);
+    public List<AssetUser> findList() {
+        return assetUserRepository.findAll();
     }
 
     @Override
@@ -32,6 +36,7 @@ public class AssetUserServiceImpl implements AssetUserService {
     @Override
     public AssetUser save(AssetUser assetUser) {
         assetUser.preInsert();
+        assetUser.setType(sysUserTypeRepository.findByName(assetUser.getType().getName()));
         return assetUserRepository.save(assetUser);
     }
 

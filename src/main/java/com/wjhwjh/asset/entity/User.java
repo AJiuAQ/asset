@@ -5,10 +5,7 @@ import lombok.Data;
 import org.checkerframework.checker.units.qual.C;
 import org.hibernate.annotations.Proxy;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.*;
 
 
 /**
@@ -35,8 +32,9 @@ public class User extends DataEntity<User> {
 
     private String password;
 
-    @Column(nullable = false)
-    private Integer type;
+    @ManyToOne
+    @JoinColumn(name = "type")
+    private SysUserType type;
 
     @Column(length = 500)
     private String token;

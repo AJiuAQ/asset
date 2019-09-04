@@ -1,6 +1,7 @@
 package com.wjhwjh.asset.service.impl;
 
 import com.wjhwjh.asset.entity.User;
+import com.wjhwjh.asset.repository.SysUserTypeRepository;
 import com.wjhwjh.asset.repository.UserRepository;
 import com.wjhwjh.asset.service.TokenService;
 import com.wjhwjh.asset.service.UserService;
@@ -22,8 +23,12 @@ public class UserServiceImpl implements UserService {
     @Autowired
     TokenService tokenService;
 
+    @Autowired
+    SysUserTypeRepository sysUserTypeRepository;
+
     public User save(User user) {
         user.preInsert();
+        user.setType(sysUserTypeRepository.findByName(user.getType().getName()));
         return userRepository.save(user);
     }
 

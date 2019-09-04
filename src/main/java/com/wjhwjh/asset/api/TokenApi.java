@@ -2,12 +2,14 @@ package com.wjhwjh.asset.api;
 
 import com.alibaba.fastjson.JSONObject;
 import com.wjhwjh.asset.common.config.annotation.PassToken;
+import com.wjhwjh.asset.common.utils.UserUtils;
 import com.wjhwjh.asset.entity.User;
 import com.wjhwjh.asset.common.persistence.result.Result;
 import com.wjhwjh.asset.common.persistence.result.ResultCode;
 import com.wjhwjh.asset.service.TokenService;
 import com.wjhwjh.asset.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -51,6 +53,14 @@ public class TokenApi {
         }
 
         return Result.success(ResultCode.SUCCESS, jsonObject);
+    }
+
+    @PostMapping("/{userId}")
+    public Result logout() {
+        User user = UserUtils.getUser();
+        user.setToken("");
+        userService.saveAndFlush(user);
+        return Result.success(ResultCode.SUCCESS);
     }
 
 }
